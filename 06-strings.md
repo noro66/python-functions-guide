@@ -126,9 +126,9 @@ def upper_lower(str_1: str) -> str:
     for char in str_1:
         if char.isalpha():
             if number % 2 == 0:
-                char = char.upper()
+                char = char
             else:
-                char = char.lower()
+                char = char
             result += char
         else:
             result += char
@@ -217,8 +217,8 @@ Same? → True ✅
 
 ```python
 def are_anagrams(s1, s2):
-    s1 = s1.replace(" ", "").lower()
-    s2 = s2.replace(" ", "").lower()
+    s1 = s1.replace(" ", "")
+    s2 = s2.replace(" ", "")
 
     if len(s1) != len(s2):
         return False
