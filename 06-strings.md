@@ -307,3 +307,47 @@ print(compress_string("abcd"))        # "a1b1c1d1"
 print(compress_string(""))            # ""
 print(compress_string("aabbbcccc"))   # "a2b3c4"
 ```
+
+---
+
+## ✅ Pattern Tracker
+
+### Purpose
+Counts how many times two consecutive characters are digits that increase by exactly 1.
+
+```
+"a123b47" → pairs: (1,2), (2,3), (4,7)
+Only (1,2) and (2,3) match → result = 2
+```
+
+### Code
+
+```python
+def pattern_tracker(s: str):
+    count = 0
+    for i in range(len(s) - 1):
+        if s[i].isdigit() and s[i + 1].isdigit():
+            if int(s[i]) + 1 == int(s[i + 1]):
+                count += 1
+    return count
+```
+
+### How It Works Line by Line
+
+| Line | What It Does |
+|------|-------------|
+| `count = 0` | Starts the match counter |
+| `range(len(s) - 1)` | Loops through each index with a next character available |
+| `s[i].isdigit() and s[i + 1].isdigit()` | Checks that both characters are digits |
+| `int(s[i]) + 1 == int(s[i + 1])` | Verifies the second digit is exactly one greater |
+| `count += 1` | Adds one valid pattern match |
+| `return count` | Returns total matches |
+
+### Examples
+
+```python
+print(pattern_tracker("a123b47"))   # 2
+print(pattern_tracker("x4567"))     # 3
+print(pattern_tracker("98"))        # 0
+print(pattern_tracker("ab12cd34"))  # 2
+```
